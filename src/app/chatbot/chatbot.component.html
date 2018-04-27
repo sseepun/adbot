@@ -1,13 +1,39 @@
 <div class="chat-app">
   <div class="owner">
-    PartnerPeople
+    TheBigDataSolution
   </div>
-  <div class="title">Chat Bot</div>
+  <div class="title">Ad Bot</div>
 
   <div class="chat-container" id="chat-container">
+    <div class="message from">
+      Welcome to Ad Bot. What would you like to know about us?<br>
+      <span class="clickable" (click)="clickAccess(0, 'Video')">Video</span> |
+      <span class="clickable" (click)="clickAccess(1, 'Data')">Data</span> |
+      <span class="clickable" (click)="clickAccess(2, 'Products')">Products</span>
+    </div>
+
     <ng-container *ngFor="let message of messages">
-      <div class="message" [ngClass]="{'from': message.sentBy==='bot', 'to':message.sentBy==='user'}">
-        {{ message.content }}
+
+      <!-- Build-in chat -->
+      <div *ngIf="message.sentBy=='bot' && message.content=='#code0'"
+      class="message from">
+        Video Presentation<br>
+        <video class="message-video" controls autoplay>
+          <source src="assets/video/thebigdatasolution.com - md.mp4" type="video/mp4">
+        </video> 
+      </div>
+      <div *ngIf="message.sentBy=='bot' && message.content=='#code1'"
+      class="message from">
+        Data Visualization
+        <div class="message-data">
+          <app-message-data></app-message-data>
+        </div> 
+      </div>
+
+      <!-- Other chat -->
+      <div *ngIf="message.sentBy=='user' || codeList.indexOf(message.content)<0"
+      class="message" [ngClass]="{'from': message.sentBy==='bot', 'to':message.sentBy==='user'}"
+      [innerHTML]="message.content">
       </div>
     </ng-container>
   </div>

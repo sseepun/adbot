@@ -7,12 +7,14 @@ import { ChatService } from './services/chat.service';
 // Components
 import { AppComponent } from './app.component';
 import { ChatbotComponent } from './chatbot/chatbot.component';
+import { MessageDataComponent } from './message-data/message-data.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatbotComponent
+    ChatbotComponent,
+    MessageDataComponent
   ],
   imports: [
     BrowserModule

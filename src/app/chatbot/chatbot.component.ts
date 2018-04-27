@@ -13,9 +13,8 @@ enableProdMode();
 })
 export class ChatbotComponent implements OnInit {
 
-  private messages = [
-    {content: 'ยินดีต้อนรับครับ ผมคือ chat bot ที่มาจาก DialogFlow มีอะไรถามผมได้ครับ', sentBy: 'bot'}
-  ];
+  private messages = [];
+  private codeList = ['#code0', '#code1', '#code2'];
   private subscription: Subscription;
 
   private chatContainer;
@@ -33,24 +32,50 @@ export class ChatbotComponent implements OnInit {
     });
   }
 
+  clickAccess(type, message) {
+    this.messages.push({content: message, sentBy: 'user'});
+    this.scrollBottom();
+
+    if (type==0) {
+      this.messages.push({content: '#code0', sentBy: 'bot'});
+    } else if (type==1) {
+      this.messages.push({content: '#code1', sentBy: 'bot'});
+    } else {
+
+    }
+    this.scrollBottom();
+  }
+
   sendMessage(query) {
     if (query!='') {
       this.messages.push({content: query, sentBy: 'user'});
       this.scrollBottom();
-
-      if (query.indexOf('เวลา')>-1) {
-        let now = new Date(),
-            content = 'ตอนนี้เวลา '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds()+' ครับ';
-        this.messages.push({content: content, sentBy: 'bot'});
+      
+      let input = query.toLowerCase();
+      if (input=='video') this.clickAccess(0, input);
+      else if (input=='data') this.clickAccess(1, input);
+      else if (input=='products') this.clickAccess(2, input);
+      else {
+        this.messages.push({content: 'Please choose between video, data, or products.', sentBy: 'bot'});
         this.scrollBottom();
-      } else if (query.indexOf('วันที่')>-1) {
-        let now = new Date(),
-            content = 'วันนี้วันที่ '+now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear()+' ครับ';
-        this.messages.push({content: content, sentBy: 'bot'});
-        this.scrollBottom();
-      } else {
-        this.chatService.talk(query);
       }
+
+      // this.messages.push({content: query, sentBy: 'user'});
+      // this.scrollBottom();
+
+      // if (query.indexOf('เวลา')>-1) {
+      //   let now = new Date(),
+      //       content = 'ตอนนี้เวลา '+now.getHours()+':'+now.getMinutes()+':'+now.getSeconds()+' ครับ';
+      //   this.messages.push({content: content, sentBy: 'bot'});
+      //   this.scrollBottom();
+      // } else if (query.indexOf('วันที่')>-1) {
+      //   let now = new Date(),
+      //       content = 'วันนี้วันที่ '+now.getDate()+'/'+(now.getMonth()+1)+'/'+now.getFullYear()+' ครับ';
+      //   this.messages.push({content: content, sentBy: 'bot'});
+      //   this.scrollBottom();
+      // } else {
+      //   this.chatService.talk(query);
+      // }
     }
   }
   scrollBottom() {

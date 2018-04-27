@@ -1,0 +1,8 @@
+.data-container {
+    width: 100%;
+}
+
+*>>> .hoverable {
+    pointer-events: auto;
+    cursor: pointer;
+}
