@@ -5,4 +5,5 @@
 3. `ng build` and start a Node server `node server`.
 4. Finally, you can access the application at your http://localhost:4500/.
 
-<img src="https://classclever.com/showcase/adbot.gif" width="400">
+<br>
+<img src="https://classclever.com/showcase/adbot.gif" width="540">
