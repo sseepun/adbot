@@ -5,4 +5,31 @@
 *>>> .hoverable {
     pointer-events: auto;
     cursor: pointer;
+    fill: #000000;
+    opacity: 0;
+}
+
+*>>> .data-rect {
+    fill: #2095FE;
+}
+
+*>>> .tick line {
+    opacity: 1;
+}
+*>>> .tick text {
+    font-size: 28px;
+}
+
+*>>> .data-label {
+    text-anchor: middle;
+    font-size: 28px;
+}
+
+*>>> .data-rect {
+    pointer-events: auto;
+    cursor: pointer;
+    transition: 0.3s fill;
+}
+*>>> .data-rect:hover {
+    fill: orange;
 }

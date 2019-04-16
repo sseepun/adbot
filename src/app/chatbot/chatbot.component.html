@@ -15,19 +15,23 @@
     <ng-container *ngFor="let message of messages">
 
       <!-- Build-in chat -->
-      <div *ngIf="message.sentBy=='bot' && message.content=='#code0'"
-      class="message from">
+      <div *ngIf="message.sentBy=='bot' && message.content=='#code0'" class="message from">
         Video Presentation<br>
         <video class="message-video" controls autoplay>
           <source src="assets/video/thebigdatasolution.com - md.mp4" type="video/mp4">
         </video> 
       </div>
-      <div *ngIf="message.sentBy=='bot' && message.content=='#code1'"
-      class="message from">
+      <div *ngIf="message.sentBy=='bot' && message.content=='#code1'" class="message from">
         Data Visualization
         <div class="message-data">
           <app-message-data></app-message-data>
         </div> 
+      </div>
+      <div *ngIf="message.sentBy=='bot' && message.content=='#code2'" class="message from">
+        Please check out<br>
+        <a href="http://bigdata300.com/" target="_blank">
+          www.bigdata300.com
+        </a> 
       </div>
 
       <!-- Other chat -->

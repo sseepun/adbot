@@ -41,21 +41,19 @@ export class ChatbotComponent implements OnInit {
     } else if (type==1) {
       this.messages.push({content: '#code1', sentBy: 'bot'});
     } else {
-
+      this.messages.push({content: '#code2', sentBy: 'bot'});
     }
-    this.scrollBottom();
+    d3.timeout(()=>{this.scrollBottom()}, 200);
   }
 
   sendMessage(query) {
     if (query!='') {
-      this.messages.push({content: query, sentBy: 'user'});
-      this.scrollBottom();
-      
       let input = query.toLowerCase();
       if (input=='video') this.clickAccess(0, input);
       else if (input=='data') this.clickAccess(1, input);
       else if (input=='products') this.clickAccess(2, input);
       else {
+        this.messages.push({content: query, sentBy: 'user'});
         this.messages.push({content: 'Please choose between video, data, or products.', sentBy: 'bot'});
         this.scrollBottom();
       }
