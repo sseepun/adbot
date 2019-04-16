@@ -4,3 +4,5 @@
 2. After finished cloning, you go into the project by `cd adbot` and install Node modules `npm install`.
 3. `ng build` and start a Node server `node server`.
 4. Finally, you can access the application at your http://localhost:4500/.
+
+<img src="https://classclever.com/showcase/adbot.gif" width="400">
